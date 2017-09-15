@@ -10,73 +10,75 @@ import UIKit
 import RealmSwift
 
 class PhotoCell: UITableViewCell {
+    override init(style: UITableViewCellStyle, reuseIdentifier: String!) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+    }
     
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
+    }
 }
 
-class PhotoTableViewController: UITableViewController {
+class PhotoTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var realm: Realm!
+    let photoManager = PhotoManager()
+    
+    let picker = UIImagePickerController()
+    
+    func photoFromLibrary() {
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true, completion: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        realm = try! Realm()
-
-        let photo = Photo()
-        addPhoto(withPath: photo.linkString)
         
-        try! realm.write {
-            realm.add(photo)
-        }
+        picker.delegate = self
         
-        let photoData = loadDataFromDocumentsFolder(fileName: photo.linkString)
-        let image = UIImage(data: photoData)!
-        print(image.description)
+        setupUI()
+        setupRealm()
+        
+        addSamplePhoto()
+        
+//        let photoData = photoManager.loadDataFromDocumentsFolder(fileName: photo.linkString)
+//        let image = UIImage(data: photoData)!
+//        print(image.description)
     }
     
-    func addPhoto(withPath path: String) {
+    func setupUI() {
+        tableView.register(PhotoCell.self, forCellReuseIdentifier: PhotoCell.identifier)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(photoFromLibrary))
+    }
+    
+    func addSamplePhoto() {
+        let photo = Photo()
+        
         do {
             let data = try Data(contentsOf: URL(string: "https://www.gravatar.com/avatar/876f7ddaf27a16c17a62b8a9705b45f1?s=32&d=identicon&r=PG&f=1")!)
             if let image = UIImage(data: data) {
-                saveImageToDocumentsFolder(image, fileName: path)
+                photoManager.saveImageToDocumentsFolder(image, fileName: photo.linkString)
             }
         } catch {
             print("Cannot obtain image from URL")
         }
-        
-        
+        saveToRealm(photo)
+
     }
     
-    func saveImageToDocumentsFolder(_ image: UIImage, fileName: String) {
-        let fileManager = FileManager.default
-        do {
-            let documentsDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let filePath = documentsDirectory.appendingPathComponent(fileName)
-            if let imageData = UIImageJPEGRepresentation(image, 0.5) {
-                do {
-                    try imageData.write(to: filePath, options: .atomicWrite)
-                    print("FILE PATH IS \(filePath)")
-                    print("SUCCESS TO WRITING IMAGE")
-                } catch {
-                    print(error)
-                }
-            }
-        } catch {
-            print(error)
-        }
+    
+    // MARK: - Realm helper methods
+    
+    func setupRealm() {
+        realm = try! Realm()
     }
-    func loadDataFromDocumentsFolder(fileName: String) -> Data {
-        var data = Data()
-        let fileManager = FileManager.default
-        do {
-            let documentsDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let path = documentsDirectory.appendingPathComponent(fileName)
-            data = try Data(contentsOf: path)
-            print("SOMETHING IS IN DATA? \(data)")
-        } catch {
-            print(#line, error)
+    
+    func saveToRealm(_ photo: Photo) {
+        try! realm.write {
+            realm.add(photo)
         }
-        return data
     }
 
     // MARK: - Table view data source
@@ -136,6 +138,19 @@ class PhotoTableViewController: UITableViewController {
         return true
     }
     */
+    
+    // MARK: - UIImagePickerController data source
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        print(image.description)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 
     /*
     // MARK: - Navigation

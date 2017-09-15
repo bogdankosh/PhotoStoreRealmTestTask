@@ -40,7 +40,7 @@
 /* Begin PBXFileReference section */
 		4316319C1F6C09380051EBF3 /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		43ABB7571F6ABBCC00A313C0 /* PhotoStoreRealmTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoStoreRealmTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		43ABB75A1F6ABBCC00A313C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		43ABB75A1F6ABBCC00A313C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PhotoStoreRealmTestTask/AppDelegate.swift; sourceTree = "<group>"; };
 		43ABB75F1F6ABBCC00A313C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43ABB7611F6ABBCC00A313C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43ABB7641F6ABBCC00A313C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -79,6 +79,7 @@
 			children = (
 				43ABB7591F6ABBCC00A313C0 /* PhotoStoreRealmTestTask */,
 				43ABB7581F6ABBCC00A313C0 /* Products */,
+				43ABB75A1F6ABBCC00A313C0 /* AppDelegate.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,7 +105,6 @@
 		43ABB7771F6AC53700A313C0 /* Supported Files */ = {
 			isa = PBXGroup;
 			children = (
-				43ABB75A1F6ABBCC00A313C0 /* AppDelegate.swift */,
 				43ABB7611F6ABBCC00A313C0 /* Assets.xcassets */,
 				43ABB7631F6ABBCC00A313C0 /* LaunchScreen.storyboard */,
 				43ABB7661F6ABBCC00A313C0 /* Info.plist */,
@@ -118,9 +118,9 @@
 			isa = PBXGroup;
 			children = (
 				43ABB7811F6AFCB700A313C0 /* Photo.swift */,
+				4316319C1F6C09380051EBF3 /* PhotoManager.swift */,
 				43ABB77F1F6AC98D00A313C0 /* Constants.swift */,
 				43ABB77D1F6AC93100A313C0 /* Extensions.swift */,
-				4316319C1F6C09380051EBF3 /* PhotoManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
