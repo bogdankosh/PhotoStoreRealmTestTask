@@ -17,9 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-//        var config = Realm.Configuration()
-//        config.deleteRealmIfMigrationNeeded = true
-//        Realm.Configuration.defaultConfiguration = config
+        // Delete everything from the database (for debuging)
+    /*
+        var config = Realm.Configuration()
+        config.deleteRealmIfMigrationNeeded = true
+        Realm.Configuration.defaultConfiguration = config
+    */
         
         return true
     }

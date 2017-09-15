@@ -21,30 +21,70 @@ class PhotoTableViewController: UITableViewController {
         super.viewDidLoad()
 
         realm = try! Realm()
+//
+//        try! realm.write {
+//            realm.deleteAll()
+//        }
+//        
+//        let photo1 = Photo()
+//        photo1.date = Date()
+//        photo1.name = "Photo \(arc4random())"
+//        
+//        try! realm.write {
+//            realm.add(photo1)
+//        }
         
-        try! realm.write {
-            realm.deleteAll()
+        
+        let photo = Photo()
+        addPhoto(withPath: photo.linkString)
+        
+        print(photo.linkString)
+        print(photo.linkString)
+        
+        let fileManager = FileManager.default
+        do {
+            let documentsDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let path = documentsDirectory.appendingPathComponent(photo.linkString)
+            print(path)
+            let data = try Data(contentsOf: path)
+            print("SOMETHING IS IN DATA? \(data)")
+        } catch {
+            print(error)
         }
         
-        let photo1 = Photo()
-        photo1.date = Date()
-        photo1.name = "Photo \(arc4random())"
-        
-        try! realm.write {
-            realm.add(photo1)
+    }
+    
+    func addPhoto(withPath path: String) {
+        do {
+            let data = try Data(contentsOf: URL(string: "https://www.gravatar.com/avatar/876f7ddaf27a16c17a62b8a9705b45f1?s=32&d=identicon&r=PG&f=1")!)
+            if let image = UIImage(data: data) {
+                saveImageToDocumentsFolder(image, fileName: path)
+            }
+        } catch {
+            print("Cannot obtain image from URL")
         }
-        
         
         
     }
     
-//    func addPhoto() {
-//        do {
-//        let data = try Data(contentsOf: URL(string: "https://developer.apple.com/home/images/hero-insights-large02.jpg")!)
-//        } catch {
-//            print("Cannot obtain image from URL")
-//        }
-//    }
+    func saveImageToDocumentsFolder(_ image: UIImage, fileName: String) {
+        let fileManager = FileManager.default
+        do {
+            let documentsDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let filePath = documentsDirectory.appendingPathComponent(fileName)
+            if let imageData = UIImageJPEGRepresentation(image, 0.5) {
+                do {
+                    try imageData.write(to: filePath, options: .atomicWrite)
+                    print("FILE PATH IS \(filePath)")
+                    print("SUCCESS TO WRITING IMAGE")
+                } catch {
+                    print(error)
+                }
+            }
+        } catch {
+            print(error)
+        }
+    }
 
     // MARK: - Table view data source
     
@@ -66,7 +106,6 @@ class PhotoTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        print("section is \(section)")
         return Constants.tableViewSections[section]
     }
 

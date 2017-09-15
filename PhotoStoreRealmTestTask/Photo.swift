@@ -10,9 +10,10 @@ import Foundation
 import RealmSwift
 
 class Photo: Object {
-    dynamic var name = ""
-    dynamic var date: Date? = nil
-    dynamic var link: String? = nil
-//    dynamic var sectionTitle = ""
-    dynamic var thumbnail: Data? = nil
+    dynamic var name            = ""
+    dynamic var sectionTitle    = ""
+    dynamic var date            = Date()
+    dynamic var linkString      = UUID().uuidString
+    dynamic var thumbnailString = UUID().uuidString
+    
 }
