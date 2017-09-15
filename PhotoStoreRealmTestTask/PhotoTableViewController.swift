@@ -21,37 +21,17 @@ class PhotoTableViewController: UITableViewController {
         super.viewDidLoad()
 
         realm = try! Realm()
-//
-//        try! realm.write {
-//            realm.deleteAll()
-//        }
-//        
-//        let photo1 = Photo()
-//        photo1.date = Date()
-//        photo1.name = "Photo \(arc4random())"
-//        
-//        try! realm.write {
-//            realm.add(photo1)
-//        }
-        
-        
+
         let photo = Photo()
         addPhoto(withPath: photo.linkString)
         
-        print(photo.linkString)
-        print(photo.linkString)
-        
-        let fileManager = FileManager.default
-        do {
-            let documentsDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let path = documentsDirectory.appendingPathComponent(photo.linkString)
-            print(path)
-            let data = try Data(contentsOf: path)
-            print("SOMETHING IS IN DATA? \(data)")
-        } catch {
-            print(error)
+        try! realm.write {
+            realm.add(photo)
         }
         
+        let photoData = loadDataFromDocumentsFolder(fileName: photo.linkString)
+        let image = UIImage(data: photoData)!
+        print(image.description)
     }
     
     func addPhoto(withPath path: String) {
@@ -84,6 +64,19 @@ class PhotoTableViewController: UITableViewController {
         } catch {
             print(error)
         }
+    }
+    func loadDataFromDocumentsFolder(fileName: String) -> Data {
+        var data = Data()
+        let fileManager = FileManager.default
+        do {
+            let documentsDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let path = documentsDirectory.appendingPathComponent(fileName)
+            data = try Data(contentsOf: path)
+            print("SOMETHING IS IN DATA? \(data)")
+        } catch {
+            print(#line, error)
+        }
+        return data
     }
 
     // MARK: - Table view data source
