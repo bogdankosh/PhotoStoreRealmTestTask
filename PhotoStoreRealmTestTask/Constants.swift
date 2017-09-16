@@ -11,5 +11,5 @@ import Foundation
 struct Constants {
     
     static let tableViewSections = ["User ID Photos", "Sertificate Photos"]
-        
+    
 }

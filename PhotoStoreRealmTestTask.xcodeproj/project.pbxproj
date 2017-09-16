@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4316319D1F6C09380051EBF3 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4316319C1F6C09380051EBF3 /* PhotoManager.swift */; };
+		431631A11F6C81370051EBF3 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431631A01F6C81370051EBF3 /* PhotoViewController.swift */; };
 		43ABB75B1F6ABBCC00A313C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ABB75A1F6ABBCC00A313C0 /* AppDelegate.swift */; };
 		43ABB7601F6ABBCC00A313C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43ABB75E1F6ABBCC00A313C0 /* Main.storyboard */; };
 		43ABB7621F6ABBCC00A313C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43ABB7611F6ABBCC00A313C0 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		4316319C1F6C09380051EBF3 /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		431631A01F6C81370051EBF3 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		43ABB7571F6ABBCC00A313C0 /* PhotoStoreRealmTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoStoreRealmTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43ABB75A1F6ABBCC00A313C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PhotoStoreRealmTestTask/AppDelegate.swift; sourceTree = "<group>"; };
 		43ABB75F1F6ABBCC00A313C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				43ABB7781F6AC57E00A313C0 /* PhotoTableViewController.swift */,
+				431631A01F6C81370051EBF3 /* PhotoViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				43ABB7791F6AC57E00A313C0 /* PhotoTableViewController.swift in Sources */,
 				43ABB77E1F6AC93100A313C0 /* Extensions.swift in Sources */,
 				43ABB75B1F6ABBCC00A313C0 /* AppDelegate.swift in Sources */,
+				431631A11F6C81370051EBF3 /* PhotoViewController.swift in Sources */,
 				43ABB7801F6AC98D00A313C0 /* Constants.swift in Sources */,
 				43ABB7821F6AFCB700A313C0 /* Photo.swift in Sources */,
 			);

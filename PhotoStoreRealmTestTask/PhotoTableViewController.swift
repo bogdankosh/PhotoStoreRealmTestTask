@@ -19,38 +19,33 @@ class PhotoCell: UITableViewCell {
     }
 }
 
-class PhotoTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class PhotoTableViewController: UITableViewController {
     
     var realm: Realm!
     let photoManager = PhotoManager()
     
-    let picker = UIImagePickerController()
+    var photoStore = [[Photo]]()
     
-    func photoFromLibrary() {
-        picker.allowsEditing = false
-        picker.sourceType = .photoLibrary
-        present(picker, animated: true, completion: nil)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        picker.delegate = self
         
         setupUI()
         setupRealm()
         
-        addSamplePhoto()
+        checkDatabase()
+        
+//        addSamplePhoto()
         
 //        let photoData = photoManager.loadDataFromDocumentsFolder(fileName: photo.linkString)
 //        let image = UIImage(data: photoData)!
 //        print(image.description)
+    
     }
     
     func setupUI() {
         tableView.register(PhotoCell.self, forCellReuseIdentifier: PhotoCell.identifier)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(photoFromLibrary))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(photoFromLibrary))
     }
     
     func addSamplePhoto() {
@@ -59,13 +54,24 @@ class PhotoTableViewController: UITableViewController, UINavigationControllerDel
         do {
             let data = try Data(contentsOf: URL(string: "https://www.gravatar.com/avatar/876f7ddaf27a16c17a62b8a9705b45f1?s=32&d=identicon&r=PG&f=1")!)
             if let image = UIImage(data: data) {
-                photoManager.saveImageToDocumentsFolder(image, fileName: photo.linkString)
+                PhotoManager.saveImageToDocumentsFolder(image, fileName: photo.linkString)
             }
         } catch {
             print("Cannot obtain image from URL")
         }
         saveToRealm(photo)
 
+    }
+    
+    func checkDatabase() {
+        let photos = realm.objects(Photo.self).filter("sectionTitle == %s", "userid").sorted(by: { $0.date > $1.date } )
+        let certs  = realm.objects(Photo.self).filter("sectionTitle == %s", "sertificate").sorted(by: { $0.date > $1.date } )
+        
+        photoStore.append(photos)
+        photoStore.append(certs)
+        
+        print(photoStore[1].count)
+        ()
     }
     
     
@@ -95,7 +101,7 @@ class PhotoTableViewController: UITableViewController, UINavigationControllerDel
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PhotoCell.identifier, for: indexPath)
 
-        // Configure the cell...
+        cell.textLabel?.text = "Add image"
 
         return cell
     }
@@ -139,19 +145,6 @@ class PhotoTableViewController: UITableViewController, UINavigationControllerDel
     }
     */
     
-    // MARK: - UIImagePickerController data source
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        print(image.description)
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-
     /*
     // MARK: - Navigation
 
@@ -161,5 +154,19 @@ class PhotoTableViewController: UITableViewController, UINavigationControllerDel
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let photoController = PhotoViewController()
+        var section = ""
+        switch indexPath.section {
+        case 0: section = "userid"
+        case 1: section = "sertificate"
+        default: fatalError()
+        }
+        photoController.section = SectionType(rawValue: section)!
+        navigationController?.pushViewController(photoController, animated: true)
+    }
 
 }

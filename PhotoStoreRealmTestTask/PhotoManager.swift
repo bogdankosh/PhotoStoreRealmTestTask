@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 struct PhotoManager {    
-    func saveImageToDocumentsFolder(_ image: UIImage, fileName: String) {
+    static func saveImageToDocumentsFolder(_ image: UIImage, fileName: String) {
         let fileManager = FileManager.default
         do {
             let documentsDirectory = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -28,7 +28,7 @@ struct PhotoManager {
             print(error)
         }
     }
-    func loadDataFromDocumentsFolder(fileName: String) -> Data {
+    static func loadDataFromDocumentsFolder(fileName: String) -> Data {
         var data = Data()
         let fileManager = FileManager.default
         do {
