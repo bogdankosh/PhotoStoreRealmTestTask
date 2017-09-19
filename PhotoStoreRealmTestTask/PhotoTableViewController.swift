@@ -180,6 +180,7 @@ class PhotoTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let photoController = PhotoViewController()
+        photoController.delegate = self
         
         photoController.photoObject = photoStore[indexPath.section][indexPath.row]
         
@@ -192,5 +193,9 @@ class PhotoTableViewController: UITableViewController {
         
         photoController.section = SectionType(rawValue: section)!
         navigationController?.pushViewController(photoController, animated: true)
+    }
+    
+    func heyHO(string: String) {
+        print("YAY, \(string)")
     }
 }

@@ -10,7 +10,6 @@
 		4316319D1F6C09380051EBF3 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4316319C1F6C09380051EBF3 /* PhotoManager.swift */; };
 		431631A11F6C81370051EBF3 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431631A01F6C81370051EBF3 /* PhotoViewController.swift */; };
 		43ABB75B1F6ABBCC00A313C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ABB75A1F6ABBCC00A313C0 /* AppDelegate.swift */; };
-		43ABB7601F6ABBCC00A313C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43ABB75E1F6ABBCC00A313C0 /* Main.storyboard */; };
 		43ABB7621F6ABBCC00A313C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43ABB7611F6ABBCC00A313C0 /* Assets.xcassets */; };
 		43ABB7651F6ABBCC00A313C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43ABB7631F6ABBCC00A313C0 /* LaunchScreen.storyboard */; };
 		43ABB7721F6ABC6100A313C0 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43ABB7701F6ABC6100A313C0 /* RealmSwift.framework */; };
@@ -43,7 +42,6 @@
 		431631A01F6C81370051EBF3 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		43ABB7571F6ABBCC00A313C0 /* PhotoStoreRealmTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoStoreRealmTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43ABB75A1F6ABBCC00A313C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PhotoStoreRealmTestTask/AppDelegate.swift; sourceTree = "<group>"; };
-		43ABB75F1F6ABBCC00A313C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43ABB7611F6ABBCC00A313C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43ABB7641F6ABBCC00A313C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43ABB7661F6ABBCC00A313C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,7 +97,6 @@
 			children = (
 				43ABB7831F6AFCBD00A313C0 /* Model */,
 				4316319B1F6C018E0051EBF3 /* Controller */,
-				43ABB75E1F6ABBCC00A313C0 /* Main.storyboard */,
 				43ABB7771F6AC53700A313C0 /* Supported Files */,
 			);
 			path = PhotoStoreRealmTestTask;
@@ -191,7 +188,6 @@
 			files = (
 				43ABB7651F6ABBCC00A313C0 /* LaunchScreen.storyboard in Resources */,
 				43ABB7621F6ABBCC00A313C0 /* Assets.xcassets in Resources */,
-				43ABB7601F6ABBCC00A313C0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,14 +211,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		43ABB75E1F6ABBCC00A313C0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				43ABB75F1F6ABBCC00A313C0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		43ABB7631F6ABBCC00A313C0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

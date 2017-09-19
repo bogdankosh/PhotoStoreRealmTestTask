@@ -41,6 +41,8 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
+    weak var delegate: PhotoTableViewController?
+    
     override func loadView() {
         super.loadView()
         
@@ -73,6 +75,8 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
             let data = PhotoManager.loadDataFromDocumentsFolder(fileName: photoObject.linkString)
             imageView.image = UIImage(data: data)
         }
+        
+        delegate?.heyHO(string: "YAZZZ")
         
     }
     
