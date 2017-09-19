@@ -23,7 +23,7 @@ class PhotoTableViewController: UITableViewController {
     
     var realm: Realm!
     let photoManager = PhotoManager()
-    
+
     var photoStore = [[Photo]]()
     
     override func viewDidLoad() {
@@ -31,6 +31,11 @@ class PhotoTableViewController: UITableViewController {
         
         setupUI()
         setupRealm()
+        
+        // Add two empty placeholders
+        for _ in 0 ..< 2 {
+            photoStore.append([])
+        }
         
         checkDatabase()
         
@@ -67,9 +72,11 @@ class PhotoTableViewController: UITableViewController {
         let photos = realm.objects(Photo.self).filter("sectionTitle == %s", "userid").sorted(by: { $0.date > $1.date } )
         let certs  = realm.objects(Photo.self).filter("sectionTitle == %s", "sertificate").sorted(by: { $0.date > $1.date } )
         
-        photoStore.append(photos)
-        photoStore.append(certs)
+        // TODO: Create a way to check if [0], [1] exists.
+        photoStore[0] = photos
+        photoStore[1] = certs
         
+        print(photoStore[0].count)
         print(photoStore[1].count)
         ()
     }
@@ -95,14 +102,20 @@ class PhotoTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return photoStore[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PhotoCell.identifier, for: indexPath)
-
-        cell.textLabel?.text = "Add image"
-
+        
+        print(indexPath.description)
+        
+        switch indexPath.section {
+        case 0: cell.textLabel?.text = photoStore[0][indexPath.row].date.description
+        case 1: cell.textLabel?.text = photoStore[1][indexPath.row].date.description
+        default: fatalError()
+        }
+        
         return cell
     }
     
