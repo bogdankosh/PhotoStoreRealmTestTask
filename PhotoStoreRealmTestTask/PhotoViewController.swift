@@ -19,6 +19,8 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     var realm: Realm!
     
+    var photoObject: Photo?
+    
     var image: UIImage? = nil {
         didSet {
             print("TRIGGERED")
@@ -67,17 +69,29 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
         picker.delegate = self
         realm = try! Realm()
         
+        if let photoObject = photoObject {
+            let data = PhotoManager.loadDataFromDocumentsFolder(fileName: photoObject.linkString)
+            imageView.image = UIImage(data: data)
+        }
         
     }
     
     func createPhoto() {
-        photo = Photo()
-        photo!.sectionTitle = self.section.rawValue
-        if let image = image {
-            PhotoManager.saveImageToDocumentsFolder(image, fileName: photo!.linkString)
-            try! realm.write {
-                realm.add(photo!)
+        
+        if photoObject == nil {
+            photo = Photo()
+            photo!.sectionTitle = self.section.rawValue
+            if let image = image {
+                PhotoManager.saveImageToDocumentsFolder(image, fileName: photo!.linkString)
+                try! realm.write {
+                    realm.add(photo!)
+                }
             }
+        } else {
+            if let image = image {
+                PhotoManager.saveImageToDocumentsFolder(image, fileName: photoObject!.linkString)
+            }
+
         }
     }
     

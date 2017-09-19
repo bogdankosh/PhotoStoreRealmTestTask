@@ -39,12 +39,20 @@ class PhotoTableViewController: UITableViewController {
         
         checkDatabase()
         
+        
+        
 //        addSamplePhoto()
         
 //        let photoData = photoManager.loadDataFromDocumentsFolder(fileName: photo.linkString)
 //        let image = UIImage(data: photoData)!
 //        print(image.description)
     
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        tableView.reloadData()
     }
     
     func setupUI() {
@@ -172,14 +180,17 @@ class PhotoTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let photoController = PhotoViewController()
+        
+        photoController.photoObject = photoStore[indexPath.section][indexPath.row]
+        
         var section = ""
         switch indexPath.section {
         case 0: section = "userid"
         case 1: section = "sertificate"
         default: fatalError()
         }
+        
         photoController.section = SectionType(rawValue: section)!
         navigationController?.pushViewController(photoController, animated: true)
     }
-
 }
