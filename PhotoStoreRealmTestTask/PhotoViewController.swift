@@ -59,7 +59,7 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         // Setting up UIImageView
         imageView = UIImageView()
-        imageView.image = UIImage(named: "pizza")
+        imageView.image = UIImage()
         imageView.contentMode = .scaleAspectFit
         imageView.frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: view.frame.width, height: view.frame.height - 44)
         view.addSubview(imageView)
@@ -72,8 +72,13 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
         realm = try! Realm()
         
         if let photoObject = photoObject {
-            let data = PhotoManager.loadDataFromDocumentsFolder(fileName: photoObject.linkString)
-            imageView.image = UIImage(data: data)
+            let fileName = photoObject.linkString
+            DispatchQueue.global().async {
+            let data = PhotoManager.loadDataFromDocumentsFolder(fileName: fileName)
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(data: data)
+                }
+            }
         }
         
         delegate?.heyHO(string: "YAZZZ")

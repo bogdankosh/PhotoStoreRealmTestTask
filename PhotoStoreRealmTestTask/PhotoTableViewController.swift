@@ -49,12 +49,12 @@ class PhotoTableViewController: UITableViewController {
     
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        checkDatabase()
         tableView.reloadData()
     }
-    
     func setupUI() {
         tableView.register(PhotoCell.self, forCellReuseIdentifier: PhotoCell.identifier)
         
@@ -110,7 +110,7 @@ class PhotoTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return photoStore[section].count
+        return photoStore[section].count + 1 // Plus Add Photo cell
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -118,11 +118,17 @@ class PhotoTableViewController: UITableViewController {
         
         print(indexPath.description)
         
-        switch indexPath.section {
-        case 0: cell.textLabel?.text = photoStore[0][indexPath.row].date.description
-        case 1: cell.textLabel?.text = photoStore[1][indexPath.row].date.description
-        default: fatalError()
+        switch indexPath.row {
+        case 0:
+            if indexPath.section == 0 {
+                cell.textLabel?.text = "Add Photo"
+            } else {
+                cell.textLabel?.text = "Add Sertificate"
+            }
+        default:
+            cell.textLabel?.text = photoStore[indexPath.section][indexPath.row - 1].date.description
         }
+        
         
         return cell
     }
@@ -182,7 +188,10 @@ class PhotoTableViewController: UITableViewController {
         let photoController = PhotoViewController()
         photoController.delegate = self
         
-        photoController.photoObject = photoStore[indexPath.section][indexPath.row]
+        // If the user chooses the photo cell, not create photo/certificate
+        if indexPath.row != 0 {
+            photoController.photoObject = photoStore[indexPath.section][indexPath.row - 1]
+        }
         
         var section = ""
         switch indexPath.section {
