@@ -39,14 +39,6 @@ class PhotoTableViewController: UITableViewController {
         
         checkDatabase()
         
-        
-        
-//        addSamplePhoto()
-        
-//        let photoData = photoManager.loadDataFromDocumentsFolder(fileName: photo.linkString)
-//        let image = UIImage(data: photoData)!
-//        print(image.description)
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,10 +75,6 @@ class PhotoTableViewController: UITableViewController {
         // TODO: Create a way to check if [0], [1] exists.
         photoStore[0] = photos
         photoStore[1] = certs
-        
-        print(photoStore[0].count)
-        print(photoStore[1].count)
-        ()
     }
     
     
@@ -115,20 +103,16 @@ class PhotoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PhotoCell.identifier, for: indexPath)
-        
-        print(indexPath.description)
-        
+
         switch indexPath.row {
         case 0:
-            if indexPath.section == 0 {
-                cell.textLabel?.text = "Add Photo"
-            } else {
-                cell.textLabel?.text = "Add Sertificate"
+            switch indexPath.section {
+            case 0: cell.textLabel?.text = "Add Photo"
+            case 1: cell.textLabel?.text = "Add Sertificate"
+            default: fatalError("There should be only 2 sections.")
             }
-        default:
-            cell.textLabel?.text = photoStore[indexPath.section][indexPath.row - 1].date.description
+        default: cell.textLabel?.text = photoStore[indexPath.section][indexPath.row - 1].date.description
         }
-        
         
         return cell
     }
@@ -172,16 +156,9 @@ class PhotoTableViewController: UITableViewController {
     }
     */
     
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -197,7 +174,7 @@ class PhotoTableViewController: UITableViewController {
         switch indexPath.section {
         case 0: section = "userid"
         case 1: section = "sertificate"
-        default: fatalError()
+        default: fatalError("There should be only 2 sections.")
         }
         
         photoController.section = SectionType(rawValue: section)!
