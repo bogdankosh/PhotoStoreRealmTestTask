@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		430689001F798569008B4D93 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 430688FE1F798569008B4D93 /* Interface.storyboard */; };
+		430689021F798569008B4D93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 430689011F798569008B4D93 /* Assets.xcassets */; };
+		430689091F798569008B4D93 /* PhotoStore Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 430689081F798569008B4D93 /* PhotoStore Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4306890E1F798569008B4D93 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4306890D1F798569008B4D93 /* InterfaceController.swift */; };
+		430689101F798569008B4D93 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4306890F1F798569008B4D93 /* ExtensionDelegate.swift */; };
+		430689121F798569008B4D93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 430689111F798569008B4D93 /* Assets.xcassets */; };
+		430689161F798569008B4D93 /* PhotoStore.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 430688FC1F798569008B4D93 /* PhotoStore.app */; };
 		4316319D1F6C09380051EBF3 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4316319C1F6C09380051EBF3 /* PhotoManager.swift */; };
 		431631A11F6C81370051EBF3 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431631A01F6C81370051EBF3 /* PhotoViewController.swift */; };
 		43ABB75B1F6ABBCC00A313C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ABB75A1F6ABBCC00A313C0 /* AppDelegate.swift */; };
@@ -22,7 +29,46 @@
 		43ABB7821F6AFCB700A313C0 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ABB7811F6AFCB700A313C0 /* Photo.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4306890A1F798569008B4D93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43ABB74F1F6ABBCC00A313C0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 430689071F798569008B4D93;
+			remoteInfo = "PhotoStore Extension";
+		};
+		430689141F798569008B4D93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43ABB74F1F6ABBCC00A313C0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 430688FB1F798569008B4D93;
+			remoteInfo = PhotoStore;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
+		4306891C1F798569008B4D93 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				430689091F798569008B4D93 /* PhotoStore Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4306891E1F798569008B4D93 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				430689161F798569008B4D93 /* PhotoStore.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		43ABB7761F6ABC6100A313C0 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,6 +84,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		430688FC1F798569008B4D93 /* PhotoStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		430688FF1F798569008B4D93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		430689011F798569008B4D93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		430689031F798569008B4D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		430689081F798569008B4D93 /* PhotoStore Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "PhotoStore Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4306890D1F798569008B4D93 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		4306890F1F798569008B4D93 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		430689111F798569008B4D93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		430689131F798569008B4D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4316319C1F6C09380051EBF3 /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		431631A01F6C81370051EBF3 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		43ABB7571F6ABBCC00A313C0 /* PhotoStoreRealmTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoStoreRealmTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +109,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		430689051F798569008B4D93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		43ABB7541F6ABBCC00A313C0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -66,6 +128,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		430688FD1F798569008B4D93 /* PhotoStore */ = {
+			isa = PBXGroup;
+			children = (
+				430688FE1F798569008B4D93 /* Interface.storyboard */,
+				430689011F798569008B4D93 /* Assets.xcassets */,
+				430689031F798569008B4D93 /* Info.plist */,
+			);
+			path = PhotoStore;
+			sourceTree = "<group>";
+		};
+		4306890C1F798569008B4D93 /* PhotoStore Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4306890D1F798569008B4D93 /* InterfaceController.swift */,
+				4306890F1F798569008B4D93 /* ExtensionDelegate.swift */,
+				430689111F798569008B4D93 /* Assets.xcassets */,
+				430689131F798569008B4D93 /* Info.plist */,
+			);
+			path = "PhotoStore Extension";
+			sourceTree = "<group>";
+		};
 		4316319B1F6C018E0051EBF3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				43ABB7591F6ABBCC00A313C0 /* PhotoStoreRealmTestTask */,
+				430688FD1F798569008B4D93 /* PhotoStore */,
+				4306890C1F798569008B4D93 /* PhotoStore Extension */,
 				43ABB7581F6ABBCC00A313C0 /* Products */,
 				43ABB75A1F6ABBCC00A313C0 /* AppDelegate.swift */,
 			);
@@ -88,6 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				43ABB7571F6ABBCC00A313C0 /* PhotoStoreRealmTestTask.app */,
+				430688FC1F798569008B4D93 /* PhotoStore.app */,
+				430689081F798569008B4D93 /* PhotoStore Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,6 +215,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		430688FB1F798569008B4D93 /* PhotoStore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4306891D1F798569008B4D93 /* Build configuration list for PBXNativeTarget "PhotoStore" */;
+			buildPhases = (
+				430688FA1F798569008B4D93 /* Resources */,
+				4306891C1F798569008B4D93 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4306890B1F798569008B4D93 /* PBXTargetDependency */,
+			);
+			name = PhotoStore;
+			productName = PhotoStore;
+			productReference = 430688FC1F798569008B4D93 /* PhotoStore.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		430689071F798569008B4D93 /* PhotoStore Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4306891B1F798569008B4D93 /* Build configuration list for PBXNativeTarget "PhotoStore Extension" */;
+			buildPhases = (
+				430689041F798569008B4D93 /* Sources */,
+				430689051F798569008B4D93 /* Frameworks */,
+				430689061F798569008B4D93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PhotoStore Extension";
+			productName = "PhotoStore Extension";
+			productReference = 430689081F798569008B4D93 /* PhotoStore Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		43ABB7561F6ABBCC00A313C0 /* PhotoStoreRealmTestTask */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43ABB7691F6ABBCC00A313C0 /* Build configuration list for PBXNativeTarget "PhotoStoreRealmTestTask" */;
@@ -136,10 +257,12 @@
 				43ABB7541F6ABBCC00A313C0 /* Frameworks */,
 				43ABB7551F6ABBCC00A313C0 /* Resources */,
 				43ABB7761F6ABC6100A313C0 /* Embed Frameworks */,
+				4306891E1F798569008B4D93 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				430689151F798569008B4D93 /* PBXTargetDependency */,
 			);
 			name = PhotoStoreRealmTestTask;
 			productName = PhotoStoreRealmTestTask;
@@ -156,6 +279,16 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Bohdan Koshyrets";
 				TargetAttributes = {
+					430688FB1F798569008B4D93 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = VCN7LM785T;
+						ProvisioningStyle = Automatic;
+					};
+					430689071F798569008B4D93 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = VCN7LM785T;
+						ProvisioningStyle = Automatic;
+					};
 					43ABB7561F6ABBCC00A313C0 = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = VCN7LM785T;
@@ -177,11 +310,30 @@
 			projectRoot = "";
 			targets = (
 				43ABB7561F6ABBCC00A313C0 /* PhotoStoreRealmTestTask */,
+				430688FB1F798569008B4D93 /* PhotoStore */,
+				430689071F798569008B4D93 /* PhotoStore Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		430688FA1F798569008B4D93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				430689021F798569008B4D93 /* Assets.xcassets in Resources */,
+				430689001F798569008B4D93 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		430689061F798569008B4D93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				430689121F798569008B4D93 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		43ABB7551F6ABBCC00A313C0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -194,6 +346,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		430689041F798569008B4D93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				430689101F798569008B4D93 /* ExtensionDelegate.swift in Sources */,
+				4306890E1F798569008B4D93 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		43ABB7531F6ABBCC00A313C0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -210,7 +371,28 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4306890B1F798569008B4D93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 430689071F798569008B4D93 /* PhotoStore Extension */;
+			targetProxy = 4306890A1F798569008B4D93 /* PBXContainerItemProxy */;
+		};
+		430689151F798569008B4D93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 430688FB1F798569008B4D93 /* PhotoStore */;
+			targetProxy = 430689141F798569008B4D93 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		430688FE1F798569008B4D93 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				430688FF1F798569008B4D93 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		43ABB7631F6ABBCC00A313C0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -222,6 +404,76 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		430689171F798569008B4D93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VCN7LM785T;
+				IBSC_MODULE = PhotoStore_Extension;
+				INFOPLIST_FILE = PhotoStore/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = bogdankosh.PhotoStoreRealmTestTask.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Debug;
+		};
+		430689181F798569008B4D93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VCN7LM785T;
+				IBSC_MODULE = PhotoStore_Extension;
+				INFOPLIST_FILE = PhotoStore/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = bogdankosh.PhotoStoreRealmTestTask.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Release;
+		};
+		430689191F798569008B4D93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				DEVELOPMENT_TEAM = VCN7LM785T;
+				INFOPLIST_FILE = "PhotoStore Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bogdankosh.PhotoStoreRealmTestTask.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Debug;
+		};
+		4306891A1F798569008B4D93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				DEVELOPMENT_TEAM = VCN7LM785T;
+				INFOPLIST_FILE = "PhotoStore Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bogdankosh.PhotoStoreRealmTestTask.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Release;
+		};
 		43ABB7671F6ABBCC00A313C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -354,6 +606,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4306891B1F798569008B4D93 /* Build configuration list for PBXNativeTarget "PhotoStore Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				430689191F798569008B4D93 /* Debug */,
+				4306891A1F798569008B4D93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4306891D1F798569008B4D93 /* Build configuration list for PBXNativeTarget "PhotoStore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				430689171F798569008B4D93 /* Debug */,
+				430689181F798569008B4D93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		43ABB7521F6ABBCC00A313C0 /* Build configuration list for PBXProject "PhotoStoreRealmTestTask" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

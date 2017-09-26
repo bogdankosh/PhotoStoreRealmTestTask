@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import WatchConnectivity
 
 enum SectionType: String {
     case userID = "userid"
@@ -100,8 +101,9 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
             if let image = image {
                 PhotoManager.saveImageToDocumentsFolder(image, fileName: photoObject!.linkString)
             }
-
         }
+        
+    
     }
     
     @objc func pickPhoto(sender: UIBarButtonItem) {
@@ -127,7 +129,6 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.image = image
         
         dismiss(animated: true, completion: nil)
-        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

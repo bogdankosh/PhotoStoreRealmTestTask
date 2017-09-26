@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import WatchConnectivity
 
 class PhotoCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String!) {
@@ -75,6 +76,20 @@ class PhotoTableViewController: UITableViewController {
         // TODO: Create a way to check if [0], [1] exists.
         photoStore[0] = photos
         photoStore[1] = certs
+        
+        transferPhotosToWatch()
+    }
+    
+    func transferPhotosToWatch() {
+        if WCSession.isSupported() {
+            var array = [String]()
+            for photo in photoStore[0] {
+                array.append(photo.date.description)
+            }
+            let dict = ["photo": array]
+            let session = WCSession.default()
+            session.updateApplicationContext(dict)
+        }
     }
     
     
