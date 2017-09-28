@@ -9,10 +9,10 @@
 import WatchKit
 import WatchConnectivity
 
-class ExtensionDelegate: NSObject, WKExtensionDelegate {
+class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
 
     func applicationDidFinishLaunching() {
-        // Perform any final initialization of your application.
+        setupWatchConnectivity()
     }
 
     func applicationDidBecomeActive() {
@@ -48,6 +48,21 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         }
     }
     
+    func setupWatchConnectivity() {
+        if WCSession.isSupported() {
+            let session = WCSession.default()
+            session.delegate = self
+            session.activate()
+        }
+    }
     
-
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        if let error = error {
+            print("WC Session acttivation failed with activation error: \(error.localizedDescription)")
+            return
+        }
+        print("WC Session activated with state: \(activationState.rawValue)")
+    }
+    
+    
 }
