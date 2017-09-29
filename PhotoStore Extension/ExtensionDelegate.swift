@@ -64,5 +64,10 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         print("WC Session activated with state: \(activationState.rawValue)")
     }
     
-    
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        if let photo = applicationContext["photo"] as? [String] {
+            print(#function)
+            print(photo.count)
+        }
+    }
 }

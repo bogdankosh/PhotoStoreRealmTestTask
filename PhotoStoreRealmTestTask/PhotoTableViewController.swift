@@ -88,7 +88,7 @@ class PhotoTableViewController: UITableViewController {
             }
             let dict = ["photo": array]
             let session = WCSession.default()
-            session.updateApplicationContext(dict)
+            try! session.updateApplicationContext(dict)
         }
     }
     
